@@ -16,7 +16,7 @@ function ProfileContent() {
   const initial = (user?.displayName || user?.email || '?').charAt(0).toUpperCase();
 
   return (
-    <section className="flex-1 py-16 px-4 bg-white">
+    <section className="flex-1 py-32 px-4 bg-white ">
       <div className="container max-w-2xl">
         <div className="flex items-center gap-5 mb-10">
           <div className="w-16 h-16 rounded-full bg-[#1b1b1b] text-white flex items-center justify-center text-2xl font-bold uppercase font-['Space_Grotesk',sans-serif]">

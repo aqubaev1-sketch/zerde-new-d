@@ -1,6 +1,10 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import { Plus } from 'lucide-react';
 import { Unbounded } from 'next/font/google';
+import Link from 'next/link';
+import PracticeFeatureSlider from './components/card/PracticeFeatureSlider';
+
+
 
 // cyrillic-ext обязателен: казахские буквы (ә, ғ, қ, ң, ө, ұ, ү, і, h)
 // лежат именно в этом сабсете, обычного 'cyrillic' для них недостаточно.
@@ -13,88 +17,96 @@ const unbounded = Unbounded({
 
 export default function Home() {
   return (
-    <section
-      className={`${unbounded.variable} font-[family-name:var(--font-unbounded)] relative bg-[#6C52EE] rounded-[40px_20px_50px_30px] sm:rounded-[55px_30px_65px_40px] p-6 sm:p-10 lg:p-14 text-white overflow-hidden mt-20 mb-6 max-w-7xl mx-auto transform -rotate-1 sm:-rotate-2 shadow-xl`}
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div className="container ">
+      
+    <section className="flex flex-col items-center justify-center text-center px-4 pt-[140px] pb-16 md:pt-[140px] md:pb-24 max-w-5xl mx-auto ">
+      {/* 1. Верхний бейдж (Pill Badge) */}
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-gray-200/80 rounded-full shadow-xs mb-8">
+        <span className="w-2 h-2 rounded-full bg-[#10B981] shrink-0" />
+        
+        {/* Иконка шапки выпускника (Graduation Cap) */}
+        <svg
+          className="w-4 h-4 text-[#5037ED]"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4.26 10.147L12 14.6l7.74-4.453M12 4.5l8 4.615v6.27L12 20l-8-4.615v-6.27L12 4.5z"
+          />
+        </svg>
 
-        {/* Левый блок с текстом */}
-        <div className="lg:col-span-7 z-10">
+        <span className="text-xs md:text-sm font-medium text-gray-700 tracking-tight">
+          QYZPU — Қазақ ұлттық қыздар педагогикалық университетінің ресми жобасы
+        </span>
+      </div>
 
-          {/* Наклоненный бейдж ОНЛАЙН */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-semibold mb-6 transform -rotate-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span>[•] QYZPU AI-ПЛАТФОРМАСЫ</span>
-          </div>
+      {/* 2. Главный заголовок (Heading) */}
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] leading-[1.12] mb-6">
+        ҰБТ-ға дайындықтың <br className="hidden sm:inline" />
+        <span className="text-[#5037ED] relative inline-block underline decoration-[#5037ED]/30 decoration-4 underline-offset-8">
+          интеллектуалды
+        </span>{' '}
+        AI <br className="hidden sm:inline" />
+        платформасы
+      </h1>
 
-          {/*
-            leading-[1.25] вместо leading-tight — иначе диакритики казахских
-            букв (Ғ, Қ) у длинных строк наезжают на соседнюю строку;
-            [font-feature-settings:'lnum'_1,'tnum'_1] — принудительно табличные
-            цифры, иначе "1" и "5" рисуются мельче и тоньше, чем "9".
-          */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase leading-[1.25] mb-8 tracking-wide [font-feature-settings:'lnum'_1,'tnum'_1]">
-            ZERDE ЖАСАНДЫ ИНТЕЛЛЕКТІМЕН <br className="hidden sm:inline" />
-            ҰБТ-ҒА ДАЙЫНДЫҚwwwwwwrgtrhsj{' '}
-            <span className="relative inline-block text-[#FFE600] whitespace-nowrap">
-              от 9 до 15 лет
-              {/* Волнистое подчёркивание */}
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-3 text-[#FFE600]"
-                viewBox="0 0 100 20"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,10 Q25,18 50,10 T100,10"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-          </h1>
+      {/* 3. Подзаголовок (Subtitle) */}
+      <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl leading-relaxed mb-10">
+        Жеке дайындық траекториясы, смарт-аналитика және QYZPU оқытушыларының AI-тьютор көмекшісі арқылы 140 баллға ұмтыл.
+      </p>
 
-          {/* Преимущества */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 text-xs sm:text-sm font-medium leading-snug">
-            <div className="flex items-start gap-2">
-              <Plus className="text-[#FFE600] shrink-0 mt-0.5" size={18} />
-              <span>Научим вашего ребёнка программировать уже на первом занятии</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <Plus className="text-[#FFE600] shrink-0 mt-0.5" size={18} />
-              <span>Каждое занятие проходит в группах от 2 до 4 человек</span>
-            </div>
-          </div>
-
-          {/* Наклоненная кнопка */}
-          <button className="bg-[#FFE600] hover:bg-[#ebd300] text-gray-900 font-extrabold text-xs sm:text-sm uppercase tracking-wider py-4 px-8 rounded-full transform -rotate-2 shadow-lg">
-            Попробовать бесплатно
-          </button>
-        </div>
-
-        {/* Правый блок с персонажем */}
-        <div className="lg:col-span-5 relative flex justify-center items-center">
-
-          {/* Слегка повернутый спичбабл */}
-          <div className="absolute -top-4 right-4 sm:top-2 sm:right-8 bg-white text-gray-900 px-4 py-2 rounded-full shadow-lg text-xs font-bold flex items-center gap-1 z-20 transform rotate-3">
-            <span>СКОРЕЕ К НАМ!</span>
-            <span className="text-base">🙂</span>
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45" />
-          </div>
-
-          {/* Изображение */}
-          <div className="relative w-full max-w-90 aspect-square">
-            <Image
-              src="/boy-illustration.png"
-              alt="3D персонаж мальчика с ноутбуком"
-              fill
-              className="object-contain"
-              priority
+      {/* 4. Кнопки (CTA Buttons) */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+        {/* Кнопка 1 (Primary) */}
+        <Link
+          href="/testEnt"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5037ED] hover:bg-[#422bc7] text-white font-semibold text-base rounded-2xl transition-colors shadow-sm"
+        >
+          <span>Тест тренажерін бастау</span>
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
             />
-          </div>
-        </div>
+          </svg>
+        </Link>
+
+        {/* Кнопка 2 (Secondary) */}
+        <Link
+          href="/ai-chat"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-[#0F172A] font-semibold text-base rounded-2xl transition-colors shadow-xs"
+        >
+          {/* Иконка Мозга / AI */}
+          <svg
+            className="w-5 h-5 text-[#5037ED]"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.32M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19 14.32M14.25 3.104c.251.023.501.05.75.082M19 14.32a8.001 8.001 0 01-14 0m14 0v1.43c0 1.257-.803 2.357-1.993 2.735l-2.007.639a6.002 6.002 0 01-3.6 0l-2.007-.639A2.872 2.872 0 013 15.75v-1.43"
+            />
+          </svg>
+          <span>Тегін AI Диагностика</span>
+        </Link>
       </div>
     </section>
+    <PracticeFeatureSlider/>
+    
+    </div>
   );
 }

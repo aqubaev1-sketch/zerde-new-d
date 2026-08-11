@@ -37,7 +37,7 @@ export default function Header() {
     "block w-full text-center p-4 md:p-0 font-['Inter',sans-serif] text-[14px] font-bold uppercase tracking-[1px] text-[#6a7282] hover:text-[#1f1f1f] transition-colors";
 
   return (
-    <header className="bg-white border-b border-[#464646] px-4 md:px-10 py-4 relative z-100">
+    <header className="fixed top-5 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-[1240px] bg-white py-3 px-6 rounded-[28px] z-[100]">
       <div className="container">
         <nav className="grid grid-cols-[auto_1fr_auto] items-center uppercase">
           
@@ -48,12 +48,12 @@ export default function Header() {
 
           {/* 2. Ортадағы Мәзір (md:justify-center арқылы дәл ортаға тұрады) */}
           <div
-            className={`
-              absolute top-full left-0 w-full bg-white border-t border-gray-200 shadow-lg flex flex-col items-center gap-0 p-0 overflow-hidden transition-all duration-300 z-100
-              md:static md:w-auto md:border-t-0 md:shadow-none md:flex-row md:justify-center md:overflow-visible
-              ${isMenuOpen ? 'max-h-[80vh] overflow-y-auto visible py-4 md:py-0' : 'max-h-0 invisible md:max-h-none md:visible'}
-            `}
-          >
+  className={`
+    absolute top-[calc(100%+14px)] left-0 w-full bg-white rounded-[18px] border border-gray-100 shadow-xl flex flex-col items-center gap-0 overflow-hidden transition-all duration-300 z-[100]
+    md:static md:w-auto md:bg-transparent md:border-none md:shadow-none md:flex-row md:justify-center md:overflow-visible
+    ${isMenuOpen ? 'max-h-[80vh] opacity-100 visible py-5 md:py-0' : 'max-h-0 opacity-0 invisible md:max-h-none md:opacity-100 md:visible'}
+  `}
+>
             <ul className="w-full flex flex-col items-center gap-0 m-0 p-0 list-none md:flex-row md:justify-center md:gap-10">
               {/* Скрыто для гостей и неподтверждённых — доступно только после верификации email */}
               {isVerified && (
@@ -87,16 +87,16 @@ export default function Header() {
                 user ? (
                   <button
                     onClick={handleLogout}
-                    className="w-full max-w-[260px] py-3 text-center text-[14px] font-bold uppercase text-white bg-[#1b1b1b] rounded-[4px]"
+                    className="w-full max-w-[260px] py-3 text-center text-[14px] font-bold uppercase text-white bg-[#1b1b1b] rounded-[18px]"
                   >
                     Выйти
                   </button>
                 ) : (
                   <>
-                    <Link href="/login" className="w-full max-w-[260px] py-3 text-center text-[14px] font-bold uppercase text-[#6a7282] rounded-[4px]" onClick={closeMenu}>
+                    <Link href="/login" className="w-full max-w-[260px] py-3 text-center text-[14px] font-bold uppercase text-[#6a7282] rounded-[18px]" onClick={closeMenu}>
                       Войти
                     </Link>
-                    <Link href="/register" className="w-full max-w-[260px] py-3 text-center text-[14px] font-bold uppercase text-white bg-[#6960C5] rounded-[4px]" onClick={closeMenu}>
+                    <Link href="/register" className="w-full max-w-[260px] py-3 text-center text-[14px] font-bold uppercase text-white bg-[#6960C5] rounded-[18px]" onClick={closeMenu}>
                       Регистрация
                     </Link>
                   </>
@@ -116,17 +116,17 @@ export default function Header() {
                     </span>
                     <button
                       onClick={handleLogout}
-                      className="text-[14px] font-bold uppercase text-[#6a7282] bg-transparent hover:text-[#1f1f1f] hover:bg-[#6960C5] transition-all px-[18px] py-[10px] rounded-[4px]"
+                      className="text-[14px] font-bold uppercase text-[#6a7282] bg-transparent hover:text-[#1f1f1f] hover:bg-[#6960C5] transition-all px-[18px] py-[10px] rounded-[18px]"
                     >
                       Выйти
                     </button>
                   </>
                 ) : (
                   <>
-                    <Link href="/login" className="text-[14px] font-bold uppercase text-[#6a7282] bg-transparent hover:text-[#1f1f1f] hover:bg-[#e9e7e7] transition-all px-[18px] py-[10px] rounded-[4px]">
+                    <Link href="/login" className="text-[14px] font-bold uppercase text-[#6a7282] bg-transparent hover:text-[#1f1f1f] hover:bg-[#e9e7e7] transition-all px-[18px] py-[10px] rounded-[18px]">
                       Войти
                     </Link>
-                    <Link href="/register" className="inline-flex items-center justify-center px-[18px] py-[10px] tracking-[1px] text-[14px] font-bold uppercase bg-[#6960C5] text-white rounded-[4px] hover:opacity-85 transition-opacity font-['Inter',sans-serif]">
+                    <Link href="/register" className="inline-flex items-center justify-center px-[18px] py-[10px] tracking-[1px] text-[14px] font-bold uppercase bg-[#6960C5] text-white rounded-[18px] hover:opacity-85 transition-opacity font-['Inter',sans-serif]">
                       Регистрация
                     </Link>
                   </>
@@ -151,7 +151,7 @@ export default function Header() {
 
       {/* Фон (Оверлей) */}
       <div 
-        className={`fixed inset-0 bg-black/35 transition-opacity duration-300 z-90 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-black/35  rounded-[26px] transition-opacity duration-300 z-90 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         onClick={closeMenu}
       ></div>
     </header>

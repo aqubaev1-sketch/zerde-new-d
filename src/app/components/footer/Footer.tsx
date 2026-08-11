@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-[#d1d5db] pt-16 pb-8 mt-auto">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-10">
+      <div className="container">
         
         {/* Негізгі 3 бағанды бөлік */}
         <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-10 md:gap-16 pb-12">
