@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { FaInstagram, FaTelegramPlane, FaWhatsapp } from 'react-icons/fa';
+
 
 export default function Footer() {
   return (
@@ -25,17 +27,17 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-3">
               <li>
-                <Link href="/courses" className="text-[#6a7282] hover:text-[#1f1f1f] text-sm transition-colors">
+                <Link href="/" className="text-[#6a7282] hover:text-[#1f1f1f] text-sm transition-colors">
                   Каталог курсов
                 </Link>
               </li>
               <li>
-                <Link href="/tasks" className="text-[#6a7282] hover:text-[#1f1f1f] text-sm transition-colors">
+                <Link href="/" className="text-[#6a7282] hover:text-[#1f1f1f] text-sm transition-colors">
                   Практические задания
                 </Link>
               </li>
               <li>
-                <Link href="/support" className="text-[#6a7282] hover:text-[#1f1f1f] text-sm transition-colors">
+                <Link href="/" className="text-[#6a7282] hover:text-[#1f1f1f] text-sm transition-colors">
                   Поддержка и обратная связь
                 </Link>
               </li>
@@ -55,9 +57,32 @@ export default function Footer() {
                 Тел: <a href="tel:+77272370095" className="hover:text-[#1f1f1f] transition-colors">+7 (727) 237-00-95</a>
               </li>
               <li>
-                <Link href="/license" className="hover:text-[#1f1f1f] transition-colors">
-                  Лицензия
-                </Link>
+                <div className="flex flex-row gap-3 mt-1">
+                <Link
+              href="https://instagram.com"
+              target="_blank"
+              aria-label="Instagram"
+              className="w-10 h-10 rounded-full bg-pink-50 text-pink-400 flex items-center justify-center hover:bg-pink-100 transition-colors"
+            >
+              <FaInstagram size={18} />
+            </Link>
+            <Link
+              href="https://t.me"
+              target="_blank"
+              aria-label="Telegram"
+              className="w-10 h-10 rounded-full bg-sky-50 text-sky-400 flex items-center justify-center hover:bg-sky-100 transition-colors"
+            >
+              <FaTelegramPlane size={18} />
+            </Link>
+            <Link
+              href="https://wa.me/77471401404"
+              target="_blank"
+              aria-label="WhatsApp"
+              className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-400 flex items-center justify-center hover:bg-emerald-100 transition-colors"
+            >
+              <FaWhatsapp size={18} />
+            </Link>
+            </div>
               </li>
             </ul>
           </div>
